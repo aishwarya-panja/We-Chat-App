@@ -31,12 +31,14 @@ const ChatList = () => {
   console.log(Object.entries(chats));
   return (
     <div className="chatList">
-      {Object.entries(chats)?.map((chat) => (
-        <div className="userChat" key={chat[0]} onClick={() =>handleSelect(chat[1].userInfo)}>
+      {Object.entries(chats)?.sort((a,b)=> b[1].date - a[1].date).map((chat) => (
+        <div className="userChat"
+        key={chat[0]}
+        onClick={() =>handleSelect(chat[1].userInfo)}>
           <img src={chat[1].userInfo.photoURL} alt=""></img>
           <div className="userChatInfo">
             <span>{chat[1].userInfo.displayName}</span>
-            <p>{chat[1].userInfo.lastMessage?.text}</p>
+            <p>{chat[1].lastMessage?.text}</p>
           </div>
         </div>
       ))}

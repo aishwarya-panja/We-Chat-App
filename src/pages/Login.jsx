@@ -11,8 +11,8 @@ const Login = () => {
 
 
   const handleSubmit = async (e) => {
-    e.preventDefault();
-    const email = e.target[0].value;
+    e.preventDefault(); //prevents the default behavior of the form submission, which is to reload the page.
+    const email = e.target[0].value; // extract/fetch the values of email & password from the form fields when it is submitted
     const password = e.target[1].value;
 
     try {

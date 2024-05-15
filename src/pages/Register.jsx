@@ -14,25 +14,25 @@ const Register = () => {
 
   const handleSubmit = async (e) => {
     e.preventDefault();
-    const displayName = e.target[0].value;
+    const displayName = e.target[0].value; // extract/fetch all these values from the form fields when it is submitted
     const email = e.target[1].value;
     const password = e.target[2].value;
     const file = e.target[3].files[0];
 
     try {
-      const res = createUserWithEmailAndPassword(auth, email, password);
-      const storageRef = ref(storage, displayName);
+      const res = createUserWithEmailAndPassword(auth, email, password);  //creates a new user account
+      const storageRef = ref(storage, displayName); //initializes a storage reference using the display name
 
-      const uploadTask = uploadBytesResumable(storageRef, file);
+      const uploadTask = uploadBytesResumable(storageRef, file); // uploads the (new created) selected file to storage
 
       // Register three observers:
-      uploadTask.on(
+      uploadTask.on(   // method provided by firebase to listen for events during file uploadation. It takes 2 arguments
         (error) => {
-          setErr(true);
+          setErr(true);  // first argument
         },
-        () => {
-          getDownloadURL(uploadTask.snapshot.ref).then(async (downloadURL) => {
-            await updateProfile(res.user, {
+        () => {            // second argument is a function called when upload is successful
+          getDownloadURL(uploadTask.snapshot.ref).then(async (downloadURL) => { // retrieves the download URL of the uploaded file. This URL is used to access the file from wherever it's stored
+            await updateProfile(res.user, {  // updates the user's profile
               displayName,
               photoURL: downloadURL,
             });
@@ -46,8 +46,6 @@ const Register = () => {
 
             await setDoc(doc(db, "userChats", (await res).user.uid), {}) ;
             navigate("/") ;
-
-
           });
         }
       );
