@@ -8,7 +8,7 @@ import { AuthContext } from "./context/AuthContext";
 
 function App() {
   const { currentUser } = useContext(AuthContext);    //  uses the useContext hook to access the currentUser variable from the AuthContext.
-console.log(currentUser)                // It retrieves the current user's authentication status from the context.
+//console.log(currentUser)                // It retrieves the current user's authentication status from the context.
 
   const ProtectedRoute = ({ children }) => {
     if (!currentUser) {

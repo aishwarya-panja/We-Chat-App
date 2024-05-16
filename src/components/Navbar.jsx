@@ -9,7 +9,7 @@ const Navbar = () => {
     <div className='navbar'>
       <span className='logo'>We Chat</span>
       <div className='user'>
-        <im src={currentUser.photoURL} alt="" />
+        <img src={currentUser.photoURL} alt="" />
         <span>{currentUser.displayName}</span>
         <button onClick={() => signOut(auth)}>Logout</button>
       </div>

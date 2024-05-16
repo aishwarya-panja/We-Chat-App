@@ -3,7 +3,7 @@ import { initializeApp } from "firebase/app";
 import { getStorage} from "firebase/storage";
 import { getFirestore } from "firebase/firestore";
 
-console.log( import.meta.env.VITE_APP_API_KEY )
+//console.log( import.meta.env.VITE_APP_API_KEY )
 
 const firebaseConfig = {
   apiKey: import.meta.env.VITE_APP_API_KEY  ,
